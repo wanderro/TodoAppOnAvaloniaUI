@@ -1,0 +1,64 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:viewModels="clr-namespace:TodoApp.Models.ViewModels;assembly=TodoApp.Models"
+        xmlns:valueConverters="clr-namespace:TodoApp.ValueConverters"
+        
+        mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+        x:Class="TodoApp.Views.MainWindow"
+        Icon="/Assets/avalonia-logo.ico"
+        
+        Title="TodoApp">
+
+    <Grid ColumnDefinitions="* Auto 3*">
+
+        <Grid RowDefinitions="* Auto">
+            <ListBox Items="{Binding Tasks}"
+                     SelectedItem="{Binding CurrentTask}">
+                <ListBox.ItemTemplate>
+                    <DataTemplate DataType="viewModels:TaskModel">
+                        <CheckBox IsChecked="{Binding IsDone}"
+                                  HorizontalAlignment="Left">
+                            <TextBlock Text="{Binding Header}"
+                                       TextDecorations="{Binding IsDone, Converter={valueConverters:BoolToStrikethrougTextConverter}}" />
+                        </CheckBox>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
+            
+            <Button Grid.Row="1"
+                    Content="Добавить задачу"
+                    Command="{Binding AddTask}"/>
+        </Grid>
+
+        <GridSplitter Grid.Column="1"
+                      Width="6" />
+        <ContentControl Grid.Column="2"
+                        Content="{Binding CurrentTask}">
+            <ContentControl.ContentTemplate>
+                <DataTemplate DataType="viewModels:TaskModel">
+                    <Grid RowDefinitions="Auto Auto Auto *">
+                        
+                        <TextBlock Grid.Row="0"
+                                   Text="Название:"/>
+                        
+                        <TextBox Grid.Row="1"
+                                   Text="{Binding Header}"/>
+                        
+                        <TextBlock Grid.Row="2"
+                                   Text="Описание:"/>
+                        
+                        <TextBox Grid.Row="3"
+                                   Text="{Binding Description}"
+                                   TextWrapping="Wrap"
+                                   AcceptsReturn="True"
+                                   AcceptsTab="True"
+                                   Watermark="Описание задачи"/>
+                        
+                    </Grid>
+                </DataTemplate>
+            </ContentControl.ContentTemplate>
+        </ContentControl>
+    </Grid>
+</Window>

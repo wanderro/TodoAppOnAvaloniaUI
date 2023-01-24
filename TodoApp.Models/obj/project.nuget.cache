@@ -1,0 +1,11 @@
+{
+  "version": 2,
+  "dgSpecHash": "6aFMhGHqJ9c8Wsy5qFYAJ4fmzvOERk52rDZa85j3EOxOU0tAmuXojuvhtIqkKN4dQQBLWYgk6Yz3f16M/PRnig==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\Professional\\RiderProjects\\TodoApp\\TodoApp.Models\\TodoApp.Models.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\Professional\\.nuget\\packages\\fody\\6.6.4\\fody.6.6.4.nupkg.sha512",
+    "C:\\Users\\Professional\\.nuget\\packages\\propertychanged.fody\\4.1.0\\propertychanged.fody.4.1.0.nupkg.sha512"
+  ],
+  "logs": []
+}
